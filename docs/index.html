@@ -67,6 +67,10 @@
     </div>
     <div id="share">
         <div>
+            <button id="new-code">去新建 / new</button>
+        </div>
+        
+        <div>
             <h2>快来解密啊 / Come decrypt</h2>
         </div>
         <div>
@@ -98,6 +102,10 @@
             document.querySelector('#share').style.display = 'block';
             document.querySelector('#shared-content').value = implicit(atou(query[1]));
             shareInput.value = location.href;
+
+            document.querySelector('#new-code').addEventListener('click', function(){
+                window.location.href = location.origin + location.pathname;
+            })
         }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
