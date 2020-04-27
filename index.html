@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>implicitjs</title>
+    <script src="./implicit.js"></script>
+    <style>
+        body {
+            background-color: #2f4f4f;
+        }
+        #edit div,#share div {
+            display: flex;
+            justify-content: center;
+        }
+        div + div{
+            margin-top: 10px;
+        }
+        textarea {
+            width: 50%;
+            height: 300px;
+        }
+
+        #share {
+            display: none;
+        }
+        #share h2{
+            color: #eee;
+        }
+
+        #share-box {
+            text-align: center;
+        }
+        #share-box label{
+            color: #fff;
+        }
+        #share-box input{
+            width: 50%;
+            background-color: #ddd;
+            border: 0;
+            padding: 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="share-box">
+        <label>点击输入框可复制分享链接 / Click the input box to copy and share the link</label>
+        <br />
+        <input readonly id="share-url" data-clipboard-target="#share-url"/>
+    </div>
+    <div id="edit">
+        <div>
+            <textarea name="raw" id="raw"></textarea>
+        </div>
+        <div>
+            <button id="btn">转换/transform</button>
+        </div>
+        <div>
+            <textarea readonly id="ret"></textarea>
+        </div>
+    </div>
+    <div id="share">
+        <div>
+            <h2>快来解密啊 / Come decrypt</h2>
+        </div>
+        <div>
+            <textarea readonly id="shared-content"></textarea>
+        </div>
+    </div>
+    
+    <script>
+        function utoa(str) {
+            return window.btoa(unescape(encodeURIComponent(str)));
+        }
+        function atou(str) {
+            return decodeURIComponent(escape(window.atob(str)));
+        }
+        let raw = document.querySelector('#raw');
+        let btn = document.querySelector('#btn');
+        let ret = document.querySelector('#ret');
+        let shareInput = document.querySelector('#share-url');
+        btn.addEventListener('click', function(){
+            ret.value = implicit(raw.value);
+            shareInput.value = `${location.origin}${location.pathname}?raw=${utoa(raw.value)}`;
+        })
+        raw.value = 'i love you';
+        btn.click();
+
+        let query = location.search.match(/raw=([^&]*)/);
+        if(query){
+            document.querySelector('#edit').style.display = 'none';
+            document.querySelector('#share').style.display = 'block';
+            document.querySelector('#shared-content').value = implicit(atou(query[1]));
+            shareInput.value = location.href;
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
+    <script>
+        new ClipboardJS('#share-url');
+    </script>
+</body>
+</html>

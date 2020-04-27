@@ -1,0 +1,20 @@
+{
+  "name": "implicitjs",
+  "version": "1.0.0",
+  "description": "利用隐式转换替代字母",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alongite/implicitjs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alongite/implicitjs/issues"
+  },
+  "homepage": "https://github.com/alongite/implicitjs#readme"
+}
