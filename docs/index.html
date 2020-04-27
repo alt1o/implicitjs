@@ -41,6 +41,11 @@
             padding: 2px;
             cursor: pointer;
         }
+        @media screen and (max-width: 800px){
+            textarea, input {
+                width: 90%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -97,7 +102,9 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
     <script>
-        new ClipboardJS('#share-url');
+        new ClipboardJS('#share-url').on('success', function(){
+            alert('复制网址成功！快去粘贴吧！')
+        });
     </script>
 </body>
 </html>
