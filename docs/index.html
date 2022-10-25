@@ -54,20 +54,20 @@
 </head>
 <body>
     <div id="share-box">
-        <label>点击输入框可复制分享链接 / Click the input box to copy and share the link</label>
+        <label>Click the input box to copy and share the link</label>
         <br />
         <input readonly id="share-url" data-clipboard-target="#share-url"/>
         <br />
     </div>
     <div class="tips">
-        <span>目前只支持26个英文字母和数字！</span>
+        <span>Only support: a-z / A-Z / 0-9</span>
     </div>
     <div id="edit">
         <div>
             <textarea name="raw" id="raw"></textarea>
         </div>
         <div>
-            <button id="btn">转换/transform</button>
+            <button id="btn">transform</button>
         </div>
         <div>
             <textarea readonly id="ret"></textarea>
@@ -75,19 +75,19 @@
     </div>
     <div id="share">
         <div>
-            <button id="new-code">去新建 / new</button>
+            <button id="new-code">new</button>
         </div>
         
         <div>
-            <h2>快来解密啊 / Come decrypt</h2>
+            <h2>Come and decipher it!</h2>
         </div>
         <div>
             <textarea readonly id="shared-content"></textarea>
         </div>
     </div>
     <div class="star">
-        欢迎关注GitHub：
-        <a href="https://github.com/alongite/implicitjs/">https://github.com/alongite/implicitjs/</a>
+        GitHub：
+        <a href="https://github.com/alongite/implicitjs/">https://github.com/alt1o/implicitjs/</a>
     </div>
     
     <script>
@@ -123,7 +123,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
     <script>
         new ClipboardJS('#share-url').on('success', function(){
-            alert('复制网址成功！快去粘贴吧！')
+            alert('Copied!')
         });
     </script>
     <script src="https://alongite.github.io/watermarkjs/watermark.js"></script>
